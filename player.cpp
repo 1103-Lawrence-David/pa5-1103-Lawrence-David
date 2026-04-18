@@ -22,6 +22,6 @@ string Player::getToken(){
     return token;
 }
 
-void userMove(){
-    
+void Player::userMove(){
+    cout << "player move";
 }

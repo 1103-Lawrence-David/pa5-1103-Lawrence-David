@@ -22,6 +22,6 @@ string Computer::getToken(){
     return token;
 }
 
-void userMove(){
-
+void Computer::userMove(){
+    cout << "computer move";
 }

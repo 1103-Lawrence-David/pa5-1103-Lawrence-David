@@ -2,7 +2,7 @@
 #define BOARD_H
 #include "computer.h"
 #include "player.h"
-class Board{
+class Board:public Player, public Computer{
     char* boardState;
     public:
         Board();
@@ -11,12 +11,15 @@ class Board{
 
         char* getBoard();
 
-        void updateBoard(Player);
-        void updateBoard(Computer);
+        template <typename T>
+        T updateBoard(T u){
+            return u.userMove();
+        }
 
         int mainMenu();
 
         friend ostream& operator<<(const ostream&, const Board&);
+
         ~Board();
         Board& operator =(const Board&);
 };

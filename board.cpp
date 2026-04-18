@@ -21,16 +21,8 @@ char* Board::getBoard(){
     return boardState;
 }
 
-void Board::updateBoard(Player p){
-    p.userMove();
-}
-
-void Board::updateBoard(Computer c){
-    c.userMove();
-}
-
 int Board::mainMenu(){
-
+    return 0;
 }
 
 ostream& operator<<(ostream& out, Board& b){
