@@ -3,13 +3,16 @@
 #include "user.h"
 
 class Player: public User{
-    string select;
+    int select;
+    string token;
+
     public:
         Player();
-        Player(string);
+        Player(int, string, string, bool);
         Player(const Player&);
 
-        string getSelect();
+        int getSelect();
+        string getToken();
 
         void userMove();
 

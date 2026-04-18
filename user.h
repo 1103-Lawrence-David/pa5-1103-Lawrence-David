@@ -14,8 +14,8 @@ class User{
         string getName();
         bool getWin();
 
-        void setName();
-        void setWin();
+        void setName(string);
+        void setWin(bool);
 
         virtual void userMove() =0;
         

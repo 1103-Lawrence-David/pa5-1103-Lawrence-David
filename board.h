@@ -6,12 +6,18 @@ class Board{
     char* boardState;
     public:
         Board();
-        Board(char);
+        Board(char*);
         Board(const Board&);
 
-        void updateBoard(Board&);
+        char* getBoard();
 
-        friend ostream operator<<(const ostream&, const Board&);
+        void updateBoard(Player);
+        void updateBoard(Computer);
 
+        int mainMenu();
+
+        friend ostream& operator<<(const ostream&, const Board&);
+        ~Board();
+        Board& operator =(const Board&);
 };
 #endif
