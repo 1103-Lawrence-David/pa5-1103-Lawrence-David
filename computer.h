@@ -13,7 +13,7 @@ class Computer: public User{
 
         int getSelect();
         string getToken();
-        void userMove() override;
+        void userMove(int);
 
 };
 #endif

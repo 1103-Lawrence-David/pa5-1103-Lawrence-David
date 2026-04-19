@@ -3,22 +3,23 @@
 #include "computer.h"
 #include "player.h"
 class Board:public Player, public Computer{
-    char* boardState;
+    string* boardState;
     public:
         Board();
-        Board(char*);
+        Board(string*);
         Board(const Board&);
 
-        char* getBoard();
+        string getBoard(const int) const;
 
         template <typename T>
-        T updateBoard(T u){
-            return u.userMove();
+        T updateBoard(T u, int i){
+            u.userMove(i);
+            return u;
         }
 
         int mainMenu();
 
-        friend ostream& operator<<(const ostream&, const Board&);
+        friend ostream& operator<<(ostream&, const Board&); //unfucked
 
         ~Board();
         Board& operator =(const Board&);

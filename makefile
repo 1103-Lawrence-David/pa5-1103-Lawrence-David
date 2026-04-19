@@ -7,7 +7,7 @@ board.o: board.h board.cpp computer.h player.h
 computer.o: computer.cpp computer.h user.h
 	g++ -c computer.cpp 
 
-main.o: main.cpp computer.h player.h
+main.o: main.cpp board.h
 	g++ -c main.cpp
 
 player.o: player.cpp player.h user.h

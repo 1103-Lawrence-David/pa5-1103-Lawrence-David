@@ -17,7 +17,7 @@ class User{
         void setName(string);
         void setWin(bool);
 
-        virtual void userMove()=0;
+        virtual void userMove(int)=0;
         
 
 };
