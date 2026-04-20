@@ -10,18 +10,16 @@ class Board:public Player, public Computer{
         Board(const Board&);
 
         string getBoard(const int) const;
-
-        template <typename T>
-        T updateBoard(T u, int i){
-            u.userMove(i);
-            return u;
-        }
-
-        int mainMenu();
+        Board& updateBoard(Player&, int);
 
         friend ostream& operator<<(ostream&, const Board&); //unfucked
 
         ~Board();
         Board& operator =(const Board&);
+
+        void setup(string&, string&, int&);
+        Board& userMove(int, int, string);
+        int winDeclare(string, bool&, string);
+        void clearBoard();
 };
 #endif

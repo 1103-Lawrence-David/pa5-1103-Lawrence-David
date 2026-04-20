@@ -1,10 +1,10 @@
 #include "player.h"
 Player::Player():User(){
-    select = -1;
+    select = -90;
     token = "w";
 }
 
-Player::Player(int s, string t, string n, bool w):User(n, w){
+Player::Player(int s, string t, string n, int i, bool w):User(n, i, w){
     select = s;
     token = t;
 }
@@ -22,6 +22,16 @@ string Player::getToken(){
     return token;
 }
 
-void Player::userMove(int i){
-    cout << "player move: " << i << endl;
+void Player::userMove(int& i){
+    bool validSelect = false;
+    while(validSelect == false){
+        cin >> i;
+        if(i > 9 || i < 0){
+            "please enter a valid number from 1 - 9";
+        }
+        else{
+            validSelect = true;
+        }
+    }
+    i--;
 }

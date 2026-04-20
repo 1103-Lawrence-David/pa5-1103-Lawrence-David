@@ -4,7 +4,7 @@ Computer::Computer():User(){
     token = "w";
 }
 
-Computer::Computer(int s, string t, string n, bool w):User(n, w){
+Computer::Computer(int s, string t, string n, int i, bool w):User(n, i, w){
     select = s;
     token = t;
 }
@@ -22,6 +22,6 @@ string Computer::getToken(){
     return token;
 }
 
-void Computer::userMove(int i){
+void Computer::userMove(int& i){
     cout << "computer move" << i << endl;
 }

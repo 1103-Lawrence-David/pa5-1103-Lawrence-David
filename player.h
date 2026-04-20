@@ -8,13 +8,13 @@ class Player: public User{
 
     public:
         Player();
-        Player(int, string, string, bool);
+        Player(int, string, string, int, bool);
         Player(const Player&);
 
         int getSelect();
         string getToken();
 
-        void userMove(int) override;
+        void userMove(int&) override;
 
 
 };

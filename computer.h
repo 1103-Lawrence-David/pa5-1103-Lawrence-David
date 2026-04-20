@@ -8,12 +8,12 @@ class Computer: public User{
 
     public:
         Computer();
-        Computer(int, string, string, bool);
+        Computer(int, string, string, int, bool);
         Computer(const Computer&);
 
         int getSelect();
         string getToken();
-        void userMove(int);
+        void userMove(int&);
 
 };
 #endif
