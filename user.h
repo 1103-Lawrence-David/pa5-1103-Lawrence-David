@@ -1,3 +1,4 @@
+//Author:: David Lawrence
 #ifndef USER_H
 #define USER_H
 #include <iostream>

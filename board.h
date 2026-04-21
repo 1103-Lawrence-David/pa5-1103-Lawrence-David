@@ -1,3 +1,4 @@
+//Author: David Lawrence
 #ifndef BOARD_H
 #define BOARD_H
 #include "computer.h"
@@ -19,7 +20,7 @@ class Board:public Player, public Computer{
 
         void setup(string&, string&, int&);
         Board& userMove(int, int, string);
-        int winDeclare(string, bool&, string);
-        void clearBoard();
+        int winDeclare(string, bool&, string, Board);
+        void resetBoard(bool&);
 };
 #endif

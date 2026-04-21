@@ -33,5 +33,4 @@ void Player::userMove(int& i){
             validSelect = true;
         }
     }
-    i--;
 }

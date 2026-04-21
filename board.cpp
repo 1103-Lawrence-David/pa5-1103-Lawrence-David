@@ -60,18 +60,22 @@ void Board::setup(string& n, string& t, int& i){
 }
 
 Board& Board::userMove(int i, int id, string t){
+    if(i == 0){
+        return *this;
+    }
+
     if(id == 1){
-        boardState[i] = t;
+        boardState[i-1] = t;
     }
 
     if(id = 2){
-        cout << "testing";
+        boardState[i-1] = t;
     }
     return *this;
 }
 
 
-int Board::winDeclare(string x, bool& w, string name){
+int Board::winDeclare(string x, bool& w, string name, Board b){
     int fullBoard = 0;
 
     for(int i = 0; i < MAX_SIZE; i++){
@@ -79,56 +83,57 @@ int Board::winDeclare(string x, bool& w, string name){
             fullBoard++;
         }
     }
-    if(boardState[0,1,2] == x){
-        cout << name << " won!" << endl;
+    if(boardState[0] == x && boardState[1] == x && boardState[2] == x){
+        cout << b << name << " won!" << endl;
         w = true;
         return -1;
     }
-    if(boardState[3,4,5] == x){
-        cout << name << " won!" << endl;
+    if(boardState[3] == x && boardState[4] == x && boardState[5] == x){
+        cout << b << name << " won!" << endl;
         w = true;
         return -1;
     }
-    if(boardState[6,7,8] == x){
-        cout << name << " won!" << endl;
+    if(boardState[6] == x && boardState[7] == x && boardState[8] == x){
+        cout << b << name << " won!" << endl;
         w = true;
         return -1;
     }
-    if(boardState[0,3,6] == x){
-        cout << name << " won!" << endl;
+    if(boardState[0] == x && boardState[3] == x && boardState[6] == x){
+        cout << b << name << " won!" << endl;
         w = true;
         return -1;
     }
-    if(boardState[1,4,7] == x){
-        cout << name << " won!" << endl;
+    if(boardState[1] == x && boardState[4] == x && boardState[7] == x){
+        cout << b << name << " won!" << endl;
         w = true;
         return -1;
     }
-    if(boardState[2,5,8] == x){
-        cout << name << " won!" << endl;
+    if(boardState[2] == x && boardState[5] == x && boardState[8] == x){
+        cout << b << name << " won!" << endl;
         w = true;
         return -1;
     }
-    if(boardState[0,4,8] == x){
-        cout << name << " won!" << endl;
+    if(boardState[0] == x && boardState[4] == x && boardState[8] == x){
+        cout << b << name << " won!" << endl;
         w = true;
         return -1;
     }
-    if(boardState[2,4,6] == x){
-        cout << name << " won!" << endl;
+    if(boardState[2] == x && boardState[4] == x && boardState[6] == x){
+        cout << b << name << " won!" << endl;
         w = true;
         return -1;
     }
     if(fullBoard > 8){
-        cout << "It's a draw!" << endl;
+        cout << b << "It's a draw!" << endl;
         w = true;
         return -1;
     }
     return -2;
 }
 
-void Board::clearBoard(){
+void Board::resetBoard(bool& w){
     for(int i = 0; i < MAX_SIZE; i++){
         boardState[i] = "0";
     }
+    w = false;
 }
