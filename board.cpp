@@ -24,9 +24,7 @@ string Board::getBoard(const int i) const{
     return boardState[i];
 }
 
-void Board::userMove(int& i){
-    i=3;
-}
+void Board::userMove(int& i){}
 
 ostream& operator <<(ostream& out, const Board& b){
     for(int i = 0; i < 9; i++){

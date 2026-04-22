@@ -9,20 +9,15 @@
 int main(){
     bool winCon = false;
     string tempString, tempToken, tempToken2;
-    int userInput;
+    int userInput, maxSize = 9;
     Board newBoard;
-    
-    setup(tempString, tempToken, userInput);
-        
+    ofstream* outFile;
+    int* compMove = new int[maxSize];
+
+    setup(tempString, tempToken, userInput, tempToken2, outFile, compMove, maxSize);
     Player p1(-1, tempToken, tempString, 1, winCon);
-    if(tempToken == "o" || tempToken == "O"){
-        tempToken2 = "X";
-    }
-    else{
-        tempToken2 = "O";
-    }
-    
-    Computer c1(-1, tempToken2, "Computer", 2, winCon);
+    Computer p2(-1, tempToken2, "Computer", 2, winCon);
+
     while(userInput != 0){ 
         while (userInput != 0 && winCon == false){
             cout << newBoard;
@@ -35,10 +30,10 @@ int main(){
                 userInput = newBoard.winDeclare(tempToken, winCon, p1.getName(), newBoard);
                 if(userInput != -1 && userInput != 0){
                     cout << newBoard << endl << "The Computer has taken its turn:" << endl;
-                    c1.userMove(userInput);
-                    ruleCheck(c1, newBoard, userInput);
-                    newBoard.updateBoard(userInput, c1.getID(), tempToken2);
-                    userInput = newBoard.winDeclare(tempToken2, winCon, c1.getName(), newBoard);
+                    p2.userMove(userInput);
+                    ruleCheck(p2, newBoard, userInput);
+                    newBoard.updateBoard(userInput, p2.getID(), tempToken2);
+                    userInput = newBoard.winDeclare(tempToken2, winCon, p2.getName(), newBoard);
                 }
             }
         }
