@@ -21,7 +21,7 @@ class User{
         void setID(int);
         void setWin(bool);
 
-        virtual void userMove(int&)=0;
+        virtual void userMove(int&)=0; //ABC CLASS
         
 
 };

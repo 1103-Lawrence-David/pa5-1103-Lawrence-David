@@ -14,7 +14,7 @@ class Computer: public User{
 
         int getSelect();
         string getToken();
-        void userMove(int&);
+        void userMove(int&) override;
 
 };
 #endif

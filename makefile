@@ -1,11 +1,14 @@
-game: board.o computer.o main.o player.o user.o 
-	g++ -o game board.o computer.o main.o player.o user.o
+game: board.o computer.o helpers.o main.o player.o user.o 
+	g++ -o game board.o computer.o helpers.o main.o player.o user.o
 
 board.o: board.h board.cpp computer.h player.h
 	g++ -c board.cpp
 
 computer.o: computer.cpp computer.h user.h
 	g++ -c computer.cpp 
+
+helpers.o: helpers.h helpers.cpp board.h
+	g++ -c helpers.cpp
 
 main.o: main.cpp board.h
 	g++ -c main.cpp

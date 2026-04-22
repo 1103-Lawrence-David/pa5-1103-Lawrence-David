@@ -1,10 +1,10 @@
 //Author: David Lawrence
-//Version: 1.0.0 (frist major working version)
-//This version includes a working version of the game, however it does not have the ability to actually enforce the rules of tictactoe. 
+//Version: 1.1.0 (Rules Implemented)
+//This version includes a working version of the game, with the ability to enforce rules. 
 //It does unintentionally allow multiplayer supoprt, but no automated computer response. 
-//All functions implemented work, but may have to be reworked for the rule implementations.
-#include "board.h"
-bool validMove(Board, int&);
+//All functions implemented work, but may have to be reworked to their proper classes
+//Currently planning to create a dynamic player array to allow the choice between computer and multiplayer response.
+#include "helpers.h"
 
 int main(){
     bool winCon = false;
@@ -12,7 +12,7 @@ int main(){
     int userInput;
     Board newBoard;
     
-    newBoard.setup(tempString, tempToken, userInput);
+    setup(tempString, tempToken, userInput);
         
     Player p1(-1, tempToken, tempString, 1, winCon);
     if(tempToken == "o" || tempToken == "O"){
@@ -28,14 +28,16 @@ int main(){
             cout << newBoard;
             cout << "Please select your move." << endl;
             p1.userMove(userInput);
+            ruleCheck(p1, newBoard, userInput);
             
             if(userInput != -1 && userInput != 0){
-                newBoard.userMove(userInput, p1.getID(), tempToken);
+                newBoard.updateBoard(userInput, p1.getID(), tempToken);
                 userInput = newBoard.winDeclare(tempToken, winCon, p1.getName(), newBoard);
                 if(userInput != -1 && userInput != 0){
                     cout << newBoard << endl << "The Computer has taken its turn:" << endl;
                     c1.userMove(userInput);
-                    newBoard.userMove(userInput, c1.getID(), tempToken2);
+                    ruleCheck(c1, newBoard, userInput);
+                    newBoard.updateBoard(userInput, c1.getID(), tempToken2);
                     userInput = newBoard.winDeclare(tempToken2, winCon, c1.getName(), newBoard);
                 }
             }
@@ -47,11 +49,4 @@ int main(){
         }
     }
     return 0;
-}
-
-bool validMove(Board b, int& i){ //fucked idk what i'm trying to do
-    bool valid = false;
-    while(valid == false){
-        ;
-    }
 }

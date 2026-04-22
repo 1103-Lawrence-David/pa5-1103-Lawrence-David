@@ -11,15 +11,13 @@ class Board:public Player, public Computer{
         Board(const Board&);
 
         string getBoard(const int) const;
-        Board& updateBoard(Player&, int);
+        void userMove(int&) override;
 
-        friend ostream& operator<<(ostream&, const Board&); //unfucked
+        friend ostream& operator<<(ostream&, const Board&);
 
         ~Board();
         Board& operator =(const Board&);
-
-        void setup(string&, string&, int&);
-        Board& userMove(int, int, string);
+        Board& updateBoard(int, int, string);
         int winDeclare(string, bool&, string, Board);
         void resetBoard(bool&);
 };

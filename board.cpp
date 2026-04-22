@@ -1,4 +1,4 @@
-#include "board.h"
+#include "board.h" 
 #define MAX_SIZE 9
 Board::Board(){
     boardState = new string[MAX_SIZE];
@@ -24,8 +24,8 @@ string Board::getBoard(const int i) const{
     return boardState[i];
 }
 
-Board& Board::updateBoard(Player&, int){
-    return *this;
+void Board::userMove(int& i){
+    i=3;
 }
 
 ostream& operator <<(ostream& out, const Board& b){
@@ -51,15 +51,7 @@ Board& Board::operator =(const Board& b){
     return *this;
 }
 
-void Board::setup(string& n, string& t, int& i){
-    cout << "please enter your name: ";
-    cin >> n;
-    cout << "please enter whether you are x or o (you can get creative though!): ";
-    cin >> t;
-    i = -2;
-}
-
-Board& Board::userMove(int i, int id, string t){
+Board& Board::updateBoard(int i, int id, string t){
     if(i == 0){
         return *this;
     }
@@ -75,7 +67,7 @@ Board& Board::userMove(int i, int id, string t){
 }
 
 
-int Board::winDeclare(string x, bool& w, string name, Board b){
+int Board::winDeclare(string x, bool& w, string name, Board b){ //the program works though! except there's no rules since idk how to implement them yet but
     int fullBoard = 0;
 
     for(int i = 0; i < MAX_SIZE; i++){
