@@ -1,5 +1,5 @@
 //Author: David Lawrence
-//Version: 1.1.0 (Rules Implemented)
+//Version: 1.1.1 (implementing automated computer response)
 //This version includes a working version of the game, with the ability to enforce rules. 
 //It does unintentionally allow multiplayer supoprt, but no automated computer response. 
 //All functions implemented work, but may have to be reworked to their proper classes
