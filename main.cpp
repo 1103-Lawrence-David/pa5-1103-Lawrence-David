@@ -1,17 +1,16 @@
 //Author: David Lawrence
-//Version: 1.1.1 (implementing automated computer response)
+//Version: 1.2.0 (Automated response implemented)
 //This version includes a working version of the game, with the ability to enforce rules. 
-//It does unintentionally allow multiplayer supoprt, but no automated computer response. 
-//All functions implemented work, but may have to be reworked to their proper classes
-//Currently planning to create a dynamic player array to allow the choice between computer and multiplayer response.
+//It no longer allows multiplayer support
+//removed dynamic array of comp responses
 #include "helpers.h"
 
 int main(){
     bool winCon = false;
     string tempString, tempToken, tempToken2;
-    int userInput, maxSize = 9;
+    int userInput, maxSize = 81, turnNum = 0;
     Board newBoard;
-    int* compMove = new int[maxSize];
+    int compMove[maxSize];
 
     setup(tempString, tempToken, userInput, tempToken2);
     Player p1(-1, tempToken, tempString, 1, winCon);
@@ -23,26 +22,23 @@ int main(){
         return 1;
     }
     computerMoves(inFile, compMove, maxSize);
-    for(int i = 0; i < maxSize; i++){
-        cout << compMove[i];
-    }
 
     while(userInput != 0){ 
         while (userInput != 0 && winCon == false){
             cout << newBoard;
             cout << "Please select your move." << endl;
             p1.userMove(userInput);
-            ruleCheck(p1, newBoard, userInput);
+            ruleCheck(p1, newBoard, userInput, turnNum, compMove, p1.getID());
             
             if(userInput != -1 && userInput != 0){
                 newBoard.updateBoard(userInput, p1.getID(), tempToken);
                 userInput = newBoard.winDeclare(tempToken, winCon, p1.getName(), newBoard);
                 if(userInput != -1 && userInput != 0){
                     cout << newBoard << endl << "The Computer has taken its turn:" << endl;
-                    p2.userMove(userInput);
-                    ruleCheck(p2, newBoard, userInput);
+                    ruleCheck(p2, newBoard, userInput, turnNum, compMove, p2.getID());
                     newBoard.updateBoard(userInput, p2.getID(), tempToken2);
                     userInput = newBoard.winDeclare(tempToken2, winCon, p2.getName(), newBoard);
+                    turnNum++;
                 }
             }
         }
@@ -50,6 +46,7 @@ int main(){
         cin >> userInput;
         if(userInput != 0){
             newBoard.resetBoard(winCon);
+            turnNum = 0;
         }
     }
     return 0;

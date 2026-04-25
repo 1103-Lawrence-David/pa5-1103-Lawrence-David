@@ -3,19 +3,46 @@
 #define HELPERS_H
 
 void setup(string& tempString, string& tempToken, int& i, string& tempToken2);
-void resizeArray(int* arr, int& mSize);
 void computerMoves(ifstream& inFile, int* arr, int& mSize);
 
 template <typename T>
-void ruleCheck(T u, Board b, int& i){
+void ruleCheck(T u, Board b, int& uI, int t, int* arr, int id){
     bool valid = false;
-    while(valid == false){
-        if(b.getBoard(i - 1) != "0" && i != 0){
-            cout << "Please input a valid input." << endl;
-            u.userMove(i);
+    if(id == 1){
+        while(valid == false){
+            if(b.getBoard(uI - 1) != "0" && uI != 0){
+                cout << "Please input a valid input." << endl;
+                u.userMove(uI);
+            }
+            else{
+                valid = true;
+            }
         }
-        else{
-            valid = true;
+    }
+    else if(id == 2){
+        int temp = 0, maxSize = t+1;
+        int tempArr[9];
+
+        while(valid == false){
+            maxSize *=9;
+            for(int i = t * 9; i < maxSize; i++){
+                if(t != 0){
+                    tempArr[temp] = arr[i-1];
+                    temp++;
+                }
+                else{
+                    tempArr[i] = arr[i];
+                }
+            }
+            for(int i = 0; i < 9; i++){
+                temp = tempArr[i];
+                if(b.getBoard(temp- 1) != "0" && temp != 0){}
+                else{
+                    uI = temp;
+                    i = 10;
+                    valid = true;
+                }
+            }
         }
     }
 }

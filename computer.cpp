@@ -23,15 +23,5 @@ string Computer::getToken(){
 }
 
 void Computer::userMove(int& i){
-    cout << "THIS IS FOR TESTING, REMOVE BEFORE SUBMIT" << i << endl;
-    bool validSelect = false;
-    while(validSelect == false){
-        cin >> i;
-        if(i > 9 || i < 0){
-            "please enter a valid number from 1 - 9";
-        }
-        else{
-            validSelect = true;
-        }
-    }
+
 }
