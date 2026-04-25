@@ -2,6 +2,7 @@
 #ifndef USER_H
 #define USER_H
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 class User{

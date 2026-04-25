@@ -11,12 +11,21 @@ int main(){
     string tempString, tempToken, tempToken2;
     int userInput, maxSize = 9;
     Board newBoard;
-    ofstream* outFile;
     int* compMove = new int[maxSize];
 
-    setup(tempString, tempToken, userInput, tempToken2, outFile, compMove, maxSize);
+    setup(tempString, tempToken, userInput, tempToken2);
     Player p1(-1, tempToken, tempString, 1, winCon);
     Computer p2(-1, tempToken2, "Computer", 2, winCon);
+    
+    ifstream inFile("move.txt");
+    if(!inFile.is_open()){
+        cout << "program fucked" << endl;
+        return 1;
+    }
+    computerMoves(inFile, compMove, maxSize);
+    for(int i = 0; i < maxSize; i++){
+        cout << compMove[i];
+    }
 
     while(userInput != 0){ 
         while (userInput != 0 && winCon == false){
