@@ -1,5 +1,5 @@
 //Author: David Lawrence
-//Version: 1.3.0 (Automated response implemented)
+//Version: 1.3.1 (Automated response implemented)
 //This version includes a working version of the game, with the ability to enforce rules. 
 //Added display of amount of games won, tied and who did.
 #include "helpers.h"
@@ -17,6 +17,7 @@ int main(){
     userInput = computerMoves(compMove, maxSize);
 
     while(userInput != 0){ 
+        newBoard.userMove(userInput);
         while (userInput != 0 && winCon == false){
             cout << newBoard;
             cout << "Please select your move." << endl;
@@ -46,6 +47,5 @@ int main(){
         endGame(newBoard, winCon, turnNum, userInput);
     }
     winOut(tie, p1.getWinAmount(), p2.getWinAmount(), p1.getName(), p2.getName());
-    newBoard.~Board();
     return 0;
 }

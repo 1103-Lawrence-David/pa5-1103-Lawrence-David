@@ -9,6 +9,7 @@ class User{
     string name;
     int id, winAmount;
     bool win;
+    
     public:
         User();
         User(string, int, int, bool);
@@ -24,6 +25,6 @@ class User{
         void setWinAmount(int);
         void setWin(bool);
 
-        virtual void userMove(int&)=0; //ABC CLASs
+        virtual void userMove(int&)=0;
 };
 #endif

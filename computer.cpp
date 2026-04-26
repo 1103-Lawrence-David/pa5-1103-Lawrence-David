@@ -23,5 +23,5 @@ string Computer::getToken(){
 }
 
 void Computer::userMove(int& i){
-
+    
 }

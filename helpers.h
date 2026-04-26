@@ -2,29 +2,31 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
-void setup(string& tempString, string& tempToken, int& i, string& tempToken2);
-int computerMoves(int* arr, int& mSize);
-void endGame(Board& b, bool& w, int& t, int& u);
-void winOut(int, int, int, string, string);
-
 template <typename T>
-void ruleCheck(T u, Board b, int& uI, int t, int* arr, int id){ //fucked, bad allocatrion whne given 0
+void ruleCheck(T u, Board b, int& uI, int t, int* arr, int id){ 
     bool valid = false;
     if(id == 1){
-        while(valid == false){
-            if(b.getBoard(uI - 1) != "0" && uI != 0){
-                cout << "Please input a valid input." << endl;
-                u.userMove(uI);
+        while(valid != true){
+            if(uI != 0){
+                if(b.getBoard(uI - 1) != "0" && uI != 0){
+                    cout << "Please input a valid input." << endl;
+                    u.userMove(uI);
+                }
+                else{
+                    valid = true;
+                }
+            }
+            else if(uI == 0){
+                valid = true;
             }
             else{
-                valid = true;
+                cout << "error" << endl;
             }
         }
     }
     else if(id == 2){
         int temp = 0, maxSize = t+1;
         int tempArr[9];
-
         while(valid == false){
             maxSize *=9;
             for(int i = t * 9; i < maxSize; i++){
@@ -48,8 +50,13 @@ void ruleCheck(T u, Board b, int& uI, int t, int* arr, int id){ //fucked, bad al
         }
     }
     else{
-        cout << "fucked" << endl;
+        cout << "serious error" << endl;
     }
-}
+};
+
+void setup(string& tempString, string& tempToken, int& i, string& tempToken2);
+int computerMoves(int* arr, int& mSize);
+void endGame(Board& b, bool& w, int& t, int& u);
+void winOut(int, int, int, string, string);
 
 #endif
