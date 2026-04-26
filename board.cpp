@@ -127,8 +127,11 @@ int Board::winDeclare(string x, bool& w, string name, Board b, int& t){
 }
 
 void Board::resetBoard(bool& w){
+    string* tempBoard = new string[MAX_SIZE];
     for(int i = 0; i < MAX_SIZE; i++){
-        boardState[i] = "0";
+        tempBoard[i] = "0";
     }
+    delete [] boardState;
+    boardState = tempBoard;
     w = false;
 }
