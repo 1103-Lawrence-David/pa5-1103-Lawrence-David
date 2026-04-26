@@ -1,21 +1,16 @@
 #include "player.h"
 Player::Player():User(){
-    select = -90;
+
     token = "w";
 }
 
-Player::Player(int s, string t, string n, int i, int wA, bool w):User(n, i, wA,  w){
-    select = s;
+Player::Player(string t, string n, int i, int wA, bool w):User(n, i, wA,  w){
     token = t;
 }
 
 Player::Player(const Player& rhs):User(rhs){
-    select = rhs.select;
-    token = rhs.token;
-}
 
-int Player::getSelect(){
-    return select;
+    token = rhs.token;
 }
 
 string Player::getToken(){

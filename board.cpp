@@ -28,7 +28,7 @@ void Board::userMove(int& i){
     cout << endl << "This is a game of tic tac toe. Your goal is to get three in a row before your opponent does." << endl;
     cout << "If your opponent gets three in a row before you, however, they will win instead." << endl;
     cout << endl << "Rules:" << endl << "1: You may only place one piece per turn." << endl << "2. Once a piece is placed, you may not move or change that spot on the board until the game is over." << endl;
-    cout << "3. Once the player or Computer has gotten three in a row, either horizontally, vertically, or diagonally, the game ends and the player with three in a row wins that round" << endl;
+    cout << "3. Once the player or Computer has gotten three in a row, either horizontally, vertically, or diagonally" << endl <<  "the game ends and the player with three in a row wins that round" << endl;
     cout << endl << "If you understand these rules, please enter 1. If you do not understand the rules and would like to exit the program, please enter 0. ";
     cin >> i;
     while(i != 1 && i != 0){

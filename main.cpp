@@ -12,8 +12,8 @@ int main(){
     int compMove[maxSize];
 
     setup(tempString, tempToken, userInput, tempToken2);
-    Player p1(-1, tempToken, tempString, 1, win, winCon);
-    Computer p2(-1, tempToken2, "Computer", 2, lose, winCon);
+    Player p1(tempToken, tempString, 1, win, winCon);
+    Computer p2(tempToken2, "Computer", 2, lose, winCon);
     userInput = computerMoves(compMove, maxSize);
 
     while(userInput != 0){ 
@@ -28,7 +28,8 @@ int main(){
                 newBoard.updateBoard(userInput, p1.getID(), tempToken);
                 userInput = newBoard.winDeclare(tempToken, winCon, p1.getName(), newBoard, tie);
                 if(winCon == true && tieCheck == tie){
-                    p1.setWinAmount(win++);
+                    win++;
+                    p1.setWinAmount(win);
                     tieCheck = tie;
                 }
                 if(userInput != -1 && userInput != 0){
@@ -37,7 +38,8 @@ int main(){
                     newBoard.updateBoard(userInput, p2.getID(), tempToken2);
                     userInput = newBoard.winDeclare(tempToken2, winCon, p2.getName(), newBoard, tie);
                     if(winCon == true && tieCheck == tie){
-                        p2.setWinAmount(lose++);
+                        lose++;
+                        p2.setWinAmount(lose);
                         tieCheck = tie;
                     }
                     turnNum++;

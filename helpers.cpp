@@ -17,7 +17,7 @@ int computerMoves(int* arr, int& mSize){
     string temp;
     ifstream inFile("move.txt");
     if(!inFile.is_open()){
-        cout << "file not opened properly" << endl;
+        cout << "File could not be opened: Please make sure \"move.txt\" is present." << endl;
         return 0;
     }
 

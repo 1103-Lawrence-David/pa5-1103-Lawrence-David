@@ -4,15 +4,13 @@
 #include "user.h"
 
 class Player: public User{
-    int select;
     string token;
 
     public:
         Player();
-        Player(int, string, string, int, int, bool);
+        Player(string, string, int, int, bool);
         Player(const Player&);
-
-        int getSelect();
+        
         string getToken();
 
         void userMove(int&) override;

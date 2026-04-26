@@ -1,21 +1,15 @@
 #include "computer.h"
 Computer::Computer():User(){
-    select = -1;
     token = "w";
 }
 
-Computer::Computer(int s, string t, string n, int i, int wA, bool w):User(n, i, wA, w){
-    select = s;
+Computer::Computer(string t, string n, int i, int wA, bool w):User(n, i, wA, w){
+
     token = t;
 }
 
 Computer::Computer(const Computer& rhs):User(rhs){
-    select = rhs.select;
     token = rhs.token;
-}
-
-int Computer::getSelect(){
-    return select;
 }
 
 string Computer::getToken(){
