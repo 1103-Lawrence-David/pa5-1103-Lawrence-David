@@ -28,7 +28,7 @@ void Board::userMove(int& i){}
 
 ostream& operator <<(ostream& out, const Board& b){
     for(int i = 0; i < 9; i++){
-        out << b.getBoard(i) << " |---| ";
+        out << "-|| " << b.getBoard(i) << " ||-";
         if(i % 3 == 2){
             out << endl << "---------------------" << endl;
         }
@@ -53,19 +53,12 @@ Board& Board::updateBoard(int i, int id, string t){
     if(i == 0){
         return *this;
     }
-
-    if(id == 1){
-        boardState[i-1] = t;
-    }
-
-    if(id = 2){
-        boardState[i-1] = t;
-    }
+    boardState[i-1] = t;
     return *this;
 }
 
 
-int Board::winDeclare(string x, bool& w, string name, Board b){ //the program works though! except there's no rules since idk how to implement them yet but
+int Board::winDeclare(string x, bool& w, string name, Board b, int& t){
     int fullBoard = 0;
 
     for(int i = 0; i < MAX_SIZE; i++){
@@ -115,6 +108,7 @@ int Board::winDeclare(string x, bool& w, string name, Board b){ //the program wo
     }
     if(fullBoard > 8){
         cout << b << "It's a draw!" << endl;
+        t++;
         w = true;
         return -1;
     }

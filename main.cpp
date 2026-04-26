@@ -1,27 +1,20 @@
 //Author: David Lawrence
-//Version: 1.2.0 (Automated response implemented)
+//Version: 1.3.0 (Automated response implemented)
 //This version includes a working version of the game, with the ability to enforce rules. 
-//It no longer allows multiplayer support
-//removed dynamic array of comp responses
+//Added display of amount of games won, tied and who did.
 #include "helpers.h"
 
 int main(){
     bool winCon = false;
     string tempString, tempToken, tempToken2;
-    int userInput, maxSize = 81, turnNum = 0;
+    int userInput, maxSize = 81, turnNum = 0, tie, win = 0, lose = 0, tieCheck = 0;
     Board newBoard;
     int compMove[maxSize];
 
     setup(tempString, tempToken, userInput, tempToken2);
-    Player p1(-1, tempToken, tempString, 1, winCon);
-    Computer p2(-1, tempToken2, "Computer", 2, winCon);
-    
-    ifstream inFile("move.txt");
-    if(!inFile.is_open()){
-        cout << "program fucked" << endl;
-        return 1;
-    }
-    computerMoves(inFile, compMove, maxSize);
+    Player p1(-1, tempToken, tempString, 1, win, winCon);
+    Computer p2(-1, tempToken2, "Computer", 2, lose, winCon);
+    userInput = computerMoves(compMove, maxSize);
 
     while(userInput != 0){ 
         while (userInput != 0 && winCon == false){
@@ -32,22 +25,27 @@ int main(){
             
             if(userInput != -1 && userInput != 0){
                 newBoard.updateBoard(userInput, p1.getID(), tempToken);
-                userInput = newBoard.winDeclare(tempToken, winCon, p1.getName(), newBoard);
+                userInput = newBoard.winDeclare(tempToken, winCon, p1.getName(), newBoard, tie);
+                if(winCon == true && tieCheck == tie){
+                    p1.setWinAmount(win++);
+                    tieCheck = tie;
+                }
                 if(userInput != -1 && userInput != 0){
                     cout << newBoard << endl << "The Computer has taken its turn:" << endl;
                     ruleCheck(p2, newBoard, userInput, turnNum, compMove, p2.getID());
                     newBoard.updateBoard(userInput, p2.getID(), tempToken2);
-                    userInput = newBoard.winDeclare(tempToken2, winCon, p2.getName(), newBoard);
+                    userInput = newBoard.winDeclare(tempToken2, winCon, p2.getName(), newBoard, tie);
+                    if(winCon == true && tieCheck == tie){
+                        p2.setWinAmount(lose++);
+                        tieCheck = tie;
+                    }
                     turnNum++;
                 }
             }
         }
-        cout << "if you would like to play again, please enter any number except 0. If you would like to end the program, please enter 0.";
-        cin >> userInput;
-        if(userInput != 0){
-            newBoard.resetBoard(winCon);
-            turnNum = 0;
-        }
+        endGame(newBoard, winCon, turnNum, userInput);
     }
+    winOut(tie, p1.getWinAmount(), p2.getWinAmount(), p1.getName(), p2.getName());
+    newBoard.~Board();
     return 0;
 }

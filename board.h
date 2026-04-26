@@ -18,7 +18,7 @@ class Board:public Player, public Computer{
         ~Board();
         Board& operator =(const Board&);
         Board& updateBoard(int, int, string);
-        int winDeclare(string, bool&, string, Board);
+        int winDeclare(string, bool&, string, Board, int&);
         void resetBoard(bool&);
 };
 #endif

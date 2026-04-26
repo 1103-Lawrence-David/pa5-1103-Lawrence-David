@@ -4,7 +4,7 @@ Computer::Computer():User(){
     token = "w";
 }
 
-Computer::Computer(int s, string t, string n, int i, bool w):User(n, i, w){
+Computer::Computer(int s, string t, string n, int i, int wA, bool w):User(n, i, wA, w){
     select = s;
     token = t;
 }

@@ -3,10 +3,12 @@
 #define HELPERS_H
 
 void setup(string& tempString, string& tempToken, int& i, string& tempToken2);
-void computerMoves(ifstream& inFile, int* arr, int& mSize);
+int computerMoves(int* arr, int& mSize);
+void endGame(Board& b, bool& w, int& t, int& u);
+void winOut(int, int, int, string, string);
 
 template <typename T>
-void ruleCheck(T u, Board b, int& uI, int t, int* arr, int id){
+void ruleCheck(T u, Board b, int& uI, int t, int* arr, int id){ //fucked, bad allocatrion whne given 0
     bool valid = false;
     if(id == 1){
         while(valid == false){
@@ -44,6 +46,9 @@ void ruleCheck(T u, Board b, int& uI, int t, int* arr, int id){
                 }
             }
         }
+    }
+    else{
+        cout << "fucked" << endl;
     }
 }
 

@@ -9,7 +9,7 @@ class Computer: public User{
 
     public:
         Computer();
-        Computer(int, string, string, int, bool);
+        Computer(int, string, string, int, int, bool);
         Computer(const Computer&);
 
         int getSelect();

@@ -2,18 +2,21 @@
 User::User(){
     name = "fenrir";
     id = 0;
+    winAmount = 100;
     win = false;
 }
 
-User::User(string n, int i, bool w){
+User::User(string n, int i, int wA, bool w){
     name = n;
     id = i;
+    winAmount = wA;
     win = w;
 }
 
 User::User(const User& rhs){
     name = rhs.name;
     id = rhs.id;
+    winAmount = rhs.winAmount;
     win = rhs.win;
 }
 
@@ -23,6 +26,9 @@ string User::getName(){
 
 int User::getID(){
     return id;
+}
+int User::getWinAmount(){
+    return winAmount;
 }
 
 bool User::getWin(){
@@ -39,4 +45,7 @@ void User::setID(int i){
 
 void User::setWin(bool w){
     win = w;
+}
+void User::setWinAmount(int wA){
+    winAmount = wA;
 }

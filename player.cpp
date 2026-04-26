@@ -4,7 +4,7 @@ Player::Player():User(){
     token = "w";
 }
 
-Player::Player(int s, string t, string n, int i, bool w):User(n, i, w){
+Player::Player(int s, string t, string n, int i, int wA, bool w):User(n, i, wA,  w){
     select = s;
     token = t;
 }
@@ -27,7 +27,7 @@ void Player::userMove(int& i){
     while(validSelect == false){
         cin >> i;
         if(i > 9 || i < 0){
-            "please enter a valid number from 1 - 9";
+            "Please enter a valid number from 1 - 9, or 0 to exit the program.";
         }
         else{
             validSelect = true;
