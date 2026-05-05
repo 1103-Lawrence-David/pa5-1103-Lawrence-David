@@ -3,7 +3,7 @@
 #define HELPERS_H
 
 template <typename T>
-void ruleCheck(T u, Board b, int& uI, int t, int* arr, int id){ 
+void ruleCheck(T u, Board b, int& uI, int& t, int* arr, int id){ 
     bool valid = false;
     if(id == 1){
         while(valid != true){
@@ -30,13 +30,8 @@ void ruleCheck(T u, Board b, int& uI, int t, int* arr, int id){
         while(valid == false){
             maxSize *=9;
             for(int i = t * 9; i < maxSize; i++){
-                if(t != 0){
-                    tempArr[temp] = arr[i-1];
-                    temp++;
-                }
-                else{
-                    tempArr[i] = arr[i];
-                }
+                tempArr[temp] = arr[i];
+                temp++;
             }
             for(int i = 0; i < 9; i++){
                 temp = tempArr[i];
@@ -45,6 +40,7 @@ void ruleCheck(T u, Board b, int& uI, int t, int* arr, int id){
                     uI = temp;
                     i = 10;
                     valid = true;
+                    t++;
                 }
             }
         }
@@ -52,10 +48,10 @@ void ruleCheck(T u, Board b, int& uI, int t, int* arr, int id){
     else{
         cout << "serious error" << endl;
     }
-};
+}
 
 void setup(string& tempString, string& tempToken, int& i, string& tempToken2);
-int computerMoves(int* arr, int& mSize);
+int computerMoves(int* arr);
 void endGame(Board& b, bool& w, int& t, int& u);
 void winOut(int, int, int, string, string);
 

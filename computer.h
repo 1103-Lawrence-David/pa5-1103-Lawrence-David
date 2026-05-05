@@ -13,6 +13,5 @@ class Computer: public User{
 
         string getToken();
         void userMove(int&) override;
-
 };
 #endif

@@ -60,7 +60,7 @@ Board& Board::operator =(const Board& b){
     return *this;
 }
 
-Board& Board::updateBoard(int i, int id, string t){
+Board& Board::updateBoard(int i, string t){
     if(i == 0){
         return *this;
     }
@@ -126,12 +126,12 @@ int Board::winDeclare(string x, bool& w, string name, Board b, int& t){
     return -2;
 }
 
-void Board::resetBoard(bool& w){
+void Board::resetBoard(bool& w, Board& b){
     string* tempBoard = new string[MAX_SIZE];
     for(int i = 0; i < MAX_SIZE; i++){
         tempBoard[i] = "0";
     }
-    delete [] boardState;
+    b.~Board();
     boardState = tempBoard;
     w = false;
 }

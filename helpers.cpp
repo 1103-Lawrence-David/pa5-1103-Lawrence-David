@@ -12,8 +12,8 @@ void setup(string& tempString, string& tempToken, int& i, string& tempToken2){
     }
     i = -2;
 }
-int computerMoves(int* arr, int& mSize){
-    int count = 0;
+int computerMoves(int* arr){
+    int count = 0, tempInt = 0;
     string temp;
     ifstream inFile("move.txt");
     if(!inFile.is_open()){
@@ -22,25 +22,30 @@ int computerMoves(int* arr, int& mSize){
     }
 
     while(!inFile.eof()){
-        getline(inFile, temp, ',');
-        mSize = stoi(temp);
-        arr[count] = mSize;
-        count++;
-        if(count % 9 == 8){
-            getline(inFile, temp);
-            mSize = stoi(temp);
-            arr[count] = mSize;
-            count++;
+        if(count % 9 != 8){
+            getline(inFile, temp, ',');
         }
+        else{
+            getline(inFile, temp);
+        }
+        tempInt = stoi(temp);
+        arr[count] = tempInt;
+        count ++;
     }
     inFile.close();
+    for(int i = 0; i < 81; i++){ //debugging
+        cout << arr[i];
+        if(i % 9 == 8){
+            cout << endl;
+        }
+    }
     return 1;
 }
 void endGame(Board& b, bool& w, int& t, int& u){
     cout << "if you would like to play again, please enter any number except 0. If you would like to end the program, please enter 0." << endl;
     cin >> u;
     if(u != 0){
-        b.resetBoard(w);
+        b.resetBoard(w, b);
         t = 0;
     }
     else{
